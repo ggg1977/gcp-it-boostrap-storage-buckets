@@ -11,5 +11,5 @@ variable "storage_class" {
 }
 
 variable "organization" {
-  typr = string
+  type = string
 }

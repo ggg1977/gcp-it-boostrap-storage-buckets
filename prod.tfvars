@@ -1,5 +1,5 @@
 project_id    = "bogota-bod"
 environment   = "prod"
-storage_class = "MULTI_REGIONAL"
+storage_class = "STANDARD"
 organization  = "bodendava"
 location      = "US-EAST1+US-EAST4"

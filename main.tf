@@ -6,7 +6,8 @@ resource "google_storage_bucket" "gcs_trf_state" {
   uniform_bucket_level_access = true
   storage_class               = var.storage_calss # "REGIONAL - MULTI_REGIONAL
   labels = {
-    "Workload" = "IT"
+    "Workload" = "IT",
+    "Owner" = "Erick Saenz"
   }
 
   versioning {

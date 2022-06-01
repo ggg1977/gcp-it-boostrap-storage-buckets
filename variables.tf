@@ -9,3 +9,7 @@ variable "environment" {
 variable "storage_class" {
   type = string
 }
+
+variable "organization" {
+  type = string
+}

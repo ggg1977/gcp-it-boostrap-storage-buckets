@@ -58,7 +58,8 @@ steps:
         ;; 
         (*)
           export ENVIRONMENT=dev
-        ;;        
+        ;;     
+        esac   
         terraform plan  -var-file=$$ENVIRONMENT.tfvars
   # [END tf-plan]
   # [START tf-apply]

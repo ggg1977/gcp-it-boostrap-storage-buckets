@@ -1,3 +1,3 @@
-project_id    = "bogota-bod-build"
+project_id    = "bogota-bod"
 environment   = "prod"
 storage_class = "MULTI_REGIONAL"

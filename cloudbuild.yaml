@@ -27,16 +27,20 @@ steps:
     args: 
     - '-c'
     - |
-        if [[ $BRANCH_NAME = @(dev|prod) ]]; then
-           export ENVIRONMENT=$BRANCH_NAME
-        else
-           export ENVIRONMENT=dev
-        fi 
-          cp config.google.tmpl config.google.tfbackend
-          sed -i s/ORG/$$ORG/g config.google.tfbackend
-          sed -i s/BUCKET_ENVIRONMENT/$$BUCKET_ENVIRONMENT/g config.google.tfbackend
-          sed -i s/ENVIRONMENT/$$ENVIRONMENT/g config.google.tfbackend
-          terraform init -backend-config=config.google.tfbackend
+        case $BRANCH_NAME in 
+        (dev|prod)
+          export ENVIRONMENT=$BRANCH_NAME
+        ;; 
+        (*)
+          export ENVIRONMENT=dev
+        ;;
+        esac
+                
+        cp config.google.tmpl config.google.tfbackend
+        sed -i s/ORG/$$ORG/g config.google.tfbackend
+        sed -i s/BUCKET_ENVIRONMENT/$$BUCKET_ENVIRONMENT/g config.google.tfbackend
+        sed -i s/ENVIRONMENT/$$ENVIRONMENT/g config.google.tfbackend
+        terraform init -backend-config=config.google.tfbackend
     env:
     - 'ORG=bodendava'
     - 'BUCKET_ENVIRONMENT=bld'
@@ -48,12 +52,15 @@ steps:
     args: 
     - '-c'
     - |
-        if [[ $BRANCH_NAME = @(dev|prod) ]]; then
-           export ENVIRONMENT=$BRANCH_NAME
-        else
-           export ENVIRONMENT=dev
-        fi
-        terraform plan  -var-file=$ENVIRONMENT.tfvars
+        case $BRANCH_NAME in 
+        (dev|prod)
+          export ENVIRONMENT=$BRANCH_NAME
+        ;; 
+        (*)
+          export ENVIRONMENT=dev
+        ;;     
+        esac   
+        terraform plan  -var-file=$$ENVIRONMENT.tfvars
   # [END tf-plan]
   # [START tf-apply]
   - id: 'tf apply'
@@ -62,13 +69,16 @@ steps:
     args: 
     - '-c'
     - | 
-        if [[ $BRANCH_NAME = @(dev|prod) ]]; then      
+        case $BRANCH_NAME in 
+        (dev|prod)
           terraform apply -var-file=$BRANCH_NAME.tfvars -auto-approve
-        else
+        ;; 
+        (*)
           echo "***************************** SKIPPING APPLYING *******************************"
           echo "Branch '$BRANCH_NAME' is not valid branch for applying"
           echo "*******************************************************************************"
-        fi
+        ;;
+        esac
 # [END tf-apply]     
 options:
   logging: CLOUD_LOGGING_ONLY

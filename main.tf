@@ -1,4 +1,5 @@
 resource "google_storage_bucket" "gcs_trf_state" {
+  count                       = var.deploy_infra ? 1 : 0
   project                     = var.project_id
   name                        = "${var.organization}-gcs-it-trf-${var.environment}-eus1-001" # dev - prod
   location                    = var.location

@@ -1,5 +1,5 @@
-variable location {
-  type=string
+variable "location" {
+  type = string
 }
 
 variable "project_id" {
@@ -16,4 +16,8 @@ variable "storage_class" {
 
 variable "organization" {
   type = string
+}
+
+variable "deploy_infra" {
+  type = bool
 }

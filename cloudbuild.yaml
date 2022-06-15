@@ -28,7 +28,7 @@ steps:
     - '-c'
     - |
         case $BRANCH_NAME in 
-        (dev|prod)
+        (dev|net|prod)
           export ENVIRONMENT=$BRANCH_NAME
         ;; 
         (*)
@@ -53,7 +53,7 @@ steps:
     - '-c'
     - |
         case $BRANCH_NAME in 
-        (dev|prod)
+        (dev|net|prod)
           export ENVIRONMENT=$BRANCH_NAME
         ;; 
         (*)
@@ -70,7 +70,7 @@ steps:
     - '-c'
     - | 
         case $BRANCH_NAME in 
-        (dev|prod)
+        (dev|net|prod)
           terraform apply -var-file=$BRANCH_NAME.tfvars -auto-approve
         ;; 
         (*)

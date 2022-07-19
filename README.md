@@ -29,7 +29,7 @@ project_id     = <app_project_id>
 Go to the cloudbuild.yaml file and set the org right value in this section
 
 env:
-    - 'ORG=<your organization name>'
+    - 'ORG=<your_organization_name>'
 
 
 ## Pushing the changes

@@ -40,3 +40,15 @@ git add .
 git commit -m "<your_message>"
 git push
 
+
+## Merging changes to the environment branches
+
+1. In Github, Create a pull request from main to dev branch.
+2. Approve the pull request and mergue the changes. Use a rebase strategy for merging the changes.
+
+1. In Github, Create a pull request from dev to net branch.
+2. Approve the pull request and mergue the changes. Use a rebase strategy for merging the changes.
+
+
+1. In Github, Create a pull request from net to prod branch.
+2. Approve the pull request and mergue the changes. Use a rebase strategy for merging the changes.

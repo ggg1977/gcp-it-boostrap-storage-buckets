@@ -1,4 +1,4 @@
-project_id    = "bogota-bod"
+project_id    = "ggg-build"
 environment   = "dev"
 storage_class = "STANDARD"
 location      = "US-EAST1"

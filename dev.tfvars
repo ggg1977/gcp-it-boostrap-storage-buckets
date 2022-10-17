@@ -1,4 +1,4 @@
-project_id    = "ggg-build"
+project_id    = "ggg-app-361819"
 environment   = "dev"
 storage_class = "STANDARD"
 location      = "US-EAST1"
